@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<!--
+ @author Roni Deringer <ronideringer@gmail.com>
+ -->
 
 <head>
     <meta charset="UTF-8">
