@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+h1 {
+    text-align: center;
+    font-family:Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size:20px;
+    color:#000000;
+}
+
+a {
+    Color:#000000;
+    Font-Family:Verdana, Arial, Helvetica, sans-serif;
+    Font-size: 11;
+    text-decoration: underline;
+}
+
+a:hover{ /* Efeito houver do link */
+    Color:#808080;
+    Font-Family:Verdana, Arial, Helvetica, sans-serif;
+    Font-size: 11;
+    text-decoration: none;
+}
+
+table#painel{
+    border-top:2px solid #cfcfcf;
+    border-left:2px solid #cfcfcf;
+    border-right:3px solid #cfcfcf;
+    border-bottom:3px solid #cfcfcf;
+    background:#F8F8F8;
+    border-collapse:collapse;
+}
+
+div#conteudo{
+    border-top:2px solid #cfcfcf;
+    border-left:2px solid #cfcfcf;
+    border-right:3px solid #cfcfcf;
+    border-bottom:3px solid #cfcfcf;
+    background:#F8F8F8;
+    width:865px
+}
+
+form fieldset
+{
+   float: left;
+   margin-right: 7px;
+   width: 80%;
+   border: solid black 1px;
+   padding: 3%;
+   margin-bottom: 10px;
+}
+
+form legend
+{
+   padding: 6px;
+   margin: 10px;
+   border: solid black 1px;
+   font-size: 90%;
+   font-weight: bold;
+   background-color: #e8e8e8;
+}
+
+form label
+{
+   display: block;
+   font-size: 13px;
+}
+
+form input
+{
+   border: solid #ccc 1px;
+   font-size: 12px;
+   font-family: 'Trebuchet MS', Verdana, Tahoma, Serif;
+}
+
+form input.botao
+{
+   display: block;
+   width: auto;
+   float: right;
+}
+
+*{margin: 1px; padding: 0;}
+
+body{
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+}
+.menu{list-style:none; border:1px solid #c0c0c0; float:left; }
+.menu li{position:relative; float:left; border-right:1px solid #c0c0c0; }
+.menu li a{color:#333; text-decoration:none; padding:5px 10px; display:block;}
+.menu li a:hover{background:#333; color:#fff; 
+	-moz-box-shadow:0 3px 10px 0 #CCC; 
+	-webkit-box-shadow:0 3px 10px 0 #ccc; text-shadow:0px 0px 5px #fff; }
+.menu li   ul{position:absolute; top:25px; left:0; background-color:#fff; display:none; }
+.menu li:hover ul, .menu li.over ul{display:block;}
+.menu li ul li{border:1px solid #c0c0c0; display:block; width:150px;}
+tr:hover{background-color: #ffff99;}
+.sombra{background: #F0F8FF;}

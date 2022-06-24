@@ -1,0 +1,40 @@
+COLOCAR 3 PERFIS NO INDEX
+PRO ADM E PRO POLICIAL TEM UM CODIGO QUE VAI SER VIA GET
+COMO SE FOSSE A SENHA
+SE ENVIAR A SENHA TAL VAI ENVIAR PRA TAL PAGINA, 
+SE ERRAR A SENHA VAI CRIAR UM ALERT QUE DEU ERRO JA DIRECIONANDO PRO INDEX
+
+
+nao esquecer q o professor falou pra usar somente o admin
+
+
+
+rel. mt pra mt entre carro e condutor chamado acidentes
+
+calcular de forma auto. os pontos, o adm só informa qual tipo de multa foi,
+[gravissima, 7] [grave, 6] //////
+
+remover o veiculo da pesssoa, mas precisa precisa associar o veiculo a outro
+
+no editar eu coloco os valores ja preenchidos, ai quando entrar pra editar 
+só edita os campos que precisa
+
+mortes no ultimo ano pro condutor visualizar
+
+quando for criar, ja mostrar a "senha" na verdade é o id
+
+na hora de criar um condutor, as multas irem zeradas
+
+ADICIONAR UMA PESSOA É NORMAL
+MAS UM CARRO É SELECIONANDO UMA PESSOA AI PEGA O PK
+
+problemas:
+ACAO:EDIT CONDUTOR
+cadVei: option table
+
+1:1 CONDUTOR E DOCUMENTO
+rel. veicu cond
+
+datatime pk acidente
+
+arrumar 
