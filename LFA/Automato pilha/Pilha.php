@@ -20,14 +20,22 @@ echo "<hr>";
 if (isset($_POST["entrada"])) {
 
     $entrada = $_POST["entrada"];
+    //return $this->Pilha();
 
-
-
-        //aqui codigo
-
-
-    echo "<pre>";
-    echo $entrada;
-    echo "</pre>";
 }
+$estado_atual=[];
+$entrada =0 ;
+$estado_atual=0;
+$estado_atual=0;
+$estado_atual=0;
+
+
 ?>
+L = { a^n b^m | n > 0 e m = 2 · n }
+
+δ = (q, a, Z) = (p, BBZ)
+δ = (p, b, B) = (p, &)
+δ = (p, a, Z) = (p, BBZ)
+δ = (p, &, Z) = (p, &)
+δ = (p, a, B) = (p, BBB)
+
