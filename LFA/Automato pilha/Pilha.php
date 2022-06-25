@@ -19,6 +19,8 @@ echo "<hr>";
 
 if (isset($_POST["entrada"])) {
 
+    ATE AQUI
+
     $entrada = $_POST["entrada"];
     //return $this->Pilha();
 

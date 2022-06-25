@@ -1,5 +1,31 @@
 <?php
+include __DIR__ . '/css/style.php';
+echo '<h1>Automato de Pilha</h1>';
+echo '<h2> a^n b^m | n > 0 e m = 2*n </h2>';
+echo "<pre>";
 
+?>
+    <form action="" method="post">
+        <label>Entrada:</label>
+        <input type="text" name="entrada">
+        <input type="submit" value="Verificar">
+    </form>
+<?php
+
+echo "</pre>";
+echo "<hr>";
+
+if (isset($_POST["entrada"])) {
+
+    $post_user = $_POST["entrada"];
+
+
+    $conversao_p_array = str_split($post_user);
+
+        //atribuir um valor vazio na ultima posicao do array
+    $conversao_p_array[] = '';
+
+}
 class ValidaPilha
 {
     public $estado_atual;
@@ -14,7 +40,7 @@ $automato = new ValidaPilha();
 /*
  * Atribuo os valores inicias
  */
-$automato->entradas = ['a', 'b', 'a', 'b', 'b', 'b', ''];
+$automato->entradas = [$conversao_p_array];
 $automato->novo_estado = 'q';
 $automato->topo_pilha = ['Z'];
 
@@ -49,7 +75,7 @@ foreach ($automato->entradas as $entrada) {
         $automato->nova_pilha = ['B', 'B'];
     }
 
-    //4
+    //4 finaliza
     if (($automato->estado_atual == 'p') && ($entrada == '') && (end($automato->topo_pilha) == 'Z')) {
         $automato->novo_estado = 'p';
         array_pop($automato->topo_pilha);
@@ -75,13 +101,25 @@ foreach ($automato->entradas as $entrada) {
     //esvazia o nova pilha
 
 } //fim foreach
-
-if(!$automato->topo_pilha){
-    echo"AUTOMATO ACEITO";
-}else{
-    echo"AUTOMATO NAO ACEITO";
+if (isset($_POST["entrada"])) {
+    if(!$automato->topo_pilha){
+        ?>
+        <h2 style color="green">
+            <strong>
+            AUTOMATO ACEITO
+            </strong>
+        </h2>
+        <?php
+    }else{
+        ?>
+        <h2 style color="green">
+            <strong>
+            AUTOMATO ACEITO
+            </strong>
+        </h2>
+        <?php
+    }
 }
-
 
 
 
