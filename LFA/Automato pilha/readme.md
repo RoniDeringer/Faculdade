@@ -1,9 +1,9 @@
-# Sobre:
-        #automato de pilha:
+# Implementação de Autômato de Pilha:
+>>Automato de pilha:
 
      Estados:                     {q, p}
-     Alfabeto de Entrada:         {a, b}
-     Alfabeto de Pilha:           {B}
+     Alfabeto de Entrada:         {a, b, &}
+     Alfabeto de Pilha:           {Z, B}
      Estado inicial:              q
      Conjunto de estado finais:   (vai ser aceito quando o topo da pilha for vazio)
     
@@ -19,26 +19,30 @@
 
 [CODIGO SEMELHANTE](https://github.com/prompty001/automato-com-pilha/blob/master/a-pilha.py)
 
+___
 
-# FUNÇÕES USADAS:
-* array_pop é uma função que remove o último item de um array
-* array_key_last($array) ULTIMA POSICAO DO ARRAY
-* array_merge pra juntar os valores da nova_pilha para a topo_pilha
-* str_split($string)  converte uma string em array, sendo cada caracter em um termo
+## FUNÇÕES USADAS:
+* `array_pop` é uma função que remove o último item de um array;
+* `array_key_last` pega a última fumção do array;
+* `array_merge` Junta os valores de arrays (Usado para juntar os valores dos arrays recebidos 'topo da pilha' e os novos valores recibos das pilhas(se houver));
+* `str_split` Converte uma string em array, sendo cada caracter em uma posicação.
 
-# ERROS:
+## AJUSTES:
 * conseguir trazer a entrada pra classe
+    * Tentar fazer sem a classe
+* Funções recursivas ao invés de if's
 
-# FALTA:
+## FALTA:
 * ir exibindo a cada foreach os valores que estao sendo avaliados
 
-# DUVIDAS:
+## DUVIDAS:
 * Deve aceitar o `b` no inico? 
 
 *OBS meu topo da pilha é o ultimo valor do array*
 
+___
 
-# EXEMPLO:
+## EXEMPLO:
 
 >> Entrada: `ababbb`
 
