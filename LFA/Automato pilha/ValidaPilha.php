@@ -11,24 +11,15 @@ echo "<pre>";
     <input type="submit" value="Verificar">
 </form>
 <?php
+
 echo "</pre>";
 echo "<hr>";
-if (isset($_POST["entrada"])) {
-    $post_user = $_POST["entrada"];
+//if (isset($_POST["entrada"])) {
+   // $post_user = $_POST["entrada"];
+    $post_user = "bbbb";
     $conversao_p_array = str_split($post_user);
     //atribuir um valor vazio na ultima posicao do array
     $conversao_p_array[] = '';
-
-    var_dump($conversao_p_array);
-
-    /*
-    $teste = new ValidaPilha();
-
-    $recebeEntrada = $teste->$conversao_p_array;
-
-    RecebeEntrada($recebeEntrada);
-*/
-
 
     class ValidaPilha
     {
@@ -67,31 +58,36 @@ if (isset($_POST["entrada"])) {
         if (($automato->estado_atual == 'q') && ($entrada == 'a') && (end($automato->topo_pilha) == 'Z')) {
             $automato->novo_estado = 'p';
             $automato->nova_pilha = ['B', 'B'];
+            break;
         }
 
         //2
-        if (($automato->estado_atual == 'p') && ($entrada == 'b') && (end($automato->topo_pilha) == 'B')) {
+        elseif (($automato->estado_atual == 'p') && ($entrada == 'b') && (end($automato->topo_pilha) == 'B')) {
             $automato->novo_estado = 'p';
             array_pop($automato->topo_pilha); //pode dar erro aqui, possivel fazer validação, se passou aqui, nao vai receber  o nova pilha la em cima
             //como ele ja atualizou o topo_pilha, ele ja pode cair em outra validacao antes da proxima entrada(foreach)
+            break;
         }
 
         //3
-        if (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'Z')) {
+        elseif (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'Z')) {
             $automato->novo_estado = 'p';
             $automato->nova_pilha = ['B', 'B'];
+            break;
         }
 
         //4 finaliza
-        if (($automato->estado_atual == 'p') && ($entrada == '') && (end($automato->topo_pilha) == 'Z')) {
+        elseif (($automato->estado_atual == 'p') && ($entrada == '') && (end($automato->topo_pilha) == 'Z')) {
             $automato->novo_estado = 'p';
             array_pop($automato->topo_pilha);
+            break;
         }
 
         //5
-        if (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'B')) {
+        elseif (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'B')) {
             $automato->novo_estado = 'p';
             $automato->nova_pilha = ['B', 'B'];
+            break;
         }
 
 
@@ -108,26 +104,30 @@ if (isset($_POST["entrada"])) {
         //esvazia o nova pilha
 
     } //fim foreach
-    if (isset($_POST["entrada"])) {
-        if (!$automato->topo_pilha) {
+    if (!$automato->topo_pilha) {
+        echo "automato aceito";
+        
 ?>
-            <h2 style color="green">
-                <strong>
-                    AUTOMATO ACEITO
-                </strong>
-            </h2>
-        <?php
-        } else {
-        ?>
-            <h2 style color="green">
-                <strong>
-                    AUTOMATO ACEITO
-                </strong>
-            </h2>
+        <h2 style color="green">
+            <strong>
+                AUTOMATO ACEITO
+            </strong>
+        </h2>
+    <?php
+    
+    } else {
+        echo "automato aceito";
+        
+    ?>
+        <h2 style color="green">
+            <strong>
+                AUTOMATO ACEITO
+            </strong>
+        </h2>
 <?php
-        }
+
     }
-}
+//}
 
 
 
