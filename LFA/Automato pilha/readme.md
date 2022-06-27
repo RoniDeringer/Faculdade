@@ -32,6 +32,7 @@ ___
     * Tentar fazer sem a classe
 * Funções recursivas ao invés de if's
 
+
 ## FALTA:
 * ir exibindo a cada foreach os valores que estao sendo avaliados
 * Caso for Automato não deterministico (que pode haver alguma transição vazia), Fazer rodar mais de uma vez o foreach

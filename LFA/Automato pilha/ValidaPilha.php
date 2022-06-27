@@ -16,9 +16,9 @@ echo "</pre>";
 echo "<hr>";
 //if (isset($_POST["entrada"])) {
    // $post_user = $_POST["entrada"];
-   $post_user = readline("Entrada: ");
-    // $post_user = "bbbb";
+     $post_user = "bbbbbababbb";
     $conversao_p_array = str_split($post_user);
+ 
     //atribuir um valor vazio na ultima posicao do array
     $conversao_p_array[] = '';
 
@@ -49,48 +49,32 @@ echo "<hr>";
      * estado e pilha recebem os novos valores
      */
         $automato->estado_atual = $automato->novo_estado; //sobreescreve, OK
-
-
-        /*
-     * validações do delta
-     */
-
         //1
         if (($automato->estado_atual == 'q') && ($entrada == 'a') && (end($automato->topo_pilha) == 'Z')) {
             $automato->novo_estado = 'p';
             $automato->nova_pilha = ['B', 'B'];
-            break;
         }
-
         //2
-        elseif (($automato->estado_atual == 'p') && ($entrada == 'b') && (end($automato->topo_pilha) == 'B')) {
+        if (($automato->estado_atual == 'p') && ($entrada == 'b') && (end($automato->topo_pilha) == 'B')) {
             $automato->novo_estado = 'p';
             array_pop($automato->topo_pilha); //pode dar erro aqui, possivel fazer validação, se passou aqui, nao vai receber  o nova pilha la em cima
             //como ele ja atualizou o topo_pilha, ele ja pode cair em outra validacao antes da proxima entrada(foreach)
-            break;
         }
-
         //3
-        elseif (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'Z')) {
+        if (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'Z')) {
             $automato->novo_estado = 'p';
             $automato->nova_pilha = ['B', 'B'];
-            break;
         }
-
         //4 finaliza
-        elseif (($automato->estado_atual == 'p') && ($entrada == '') && (end($automato->topo_pilha) == 'Z')) {
+        if (($automato->estado_atual == 'p') && ($entrada == '') && (end($automato->topo_pilha) == 'Z')) {
             $automato->novo_estado = 'p';
             array_pop($automato->topo_pilha);
-            break;
         }
-
         //5
-        elseif (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'B')) {
+        if (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'B')) {
             $automato->novo_estado = 'p';
             $automato->nova_pilha = ['B', 'B'];
-            break;
         }
-
 
         /**
          * caso ja tenha feito o desempilhamento nos deltas, ele nao vai juntar os arrays
