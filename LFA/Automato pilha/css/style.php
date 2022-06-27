@@ -20,4 +20,27 @@ pre{
   font-size: 20px;
   color: #ecf0f1;
 }
+
+strong{
+  font-style: italic;
+  color: #ecf0f1  
+}
+
+entrada{
+  font-style: italic;
+  color: aqua;  
+}
+aceito{
+  font-size: 30px;
+  font-style: bold;
+  background-color: #a3a3a3;
+  color: #006400;
+}
+
+naceito{
+  font-size: 30px;
+  font-style: bold;
+  background-color: #a3a3a3;
+  color: #8B0000;
+}
 </style>

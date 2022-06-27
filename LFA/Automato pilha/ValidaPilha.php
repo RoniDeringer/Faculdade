@@ -1,9 +1,9 @@
 <?php
 include __DIR__ . '/css/style.php';
-echo '<h1>Automato de Pilha</h1>';
+echo '<h1>Autômato de Pilha</h1>';
 echo '<h2> a^n b^m | n > 0 e m = 2*n </h2>';
-echo "<pre>";
-/*
+
+echo "<hr>";
 ?>
 <form action="" method="post">
     <label>Entrada:</label>
@@ -11,112 +11,117 @@ echo "<pre>";
     <input type="submit" value="Verificar">
 </form>
 <?php
-*/
-echo "</pre>";
-echo "<hr>";
-//if (isset($_POST["entrada"])) {
-   // $post_user = $_POST["entrada"];
-     $post_user = "bbbbbababbb";
+
+if (isset($_POST["entrada"])) {
+    $post_user = $_POST["entrada"];
+
     $conversao_p_array = str_split($post_user);
- 
-    //atribuir um valor vazio na ultima posicao do array
     $conversao_p_array[] = '';
 
-    class ValidaPilha
-    {
-        public $estado_atual;
-        public $entradas;
-        public $topo_pilha;
-        public $novo_estado;
-        public $nova_pilha;
-        public $entrada_post;
-    }
+    echo "<br>Palavra a ser lida: <b><br>";
+    echo implode(' ', $conversao_p_array), '</b>';
+    
+    
+    $estado_atual;
+    $entradas;
+    $topo_pilha;
+    $novo_estado;
+    $nova_pilha;
+    $entrada_post;
 
-    var_dump($conversao_p_array);
 
-    $automato = new ValidaPilha();
 
-    /*
- * Atribuo os valores inicias
- */
-    $automato->entradas = $conversao_p_array;
-    $automato->novo_estado = 'q';
-    $automato->topo_pilha = ['Z'];
 
-    foreach ($automato->entradas as $entrada) {
+    $entradas = $conversao_p_array;
+    $novo_estado = 'q';
+    $topo_pilha = ['Z'];
+    echo "<pre>";
+    foreach ($entradas as $entrada) {
 
-        /*
-     * estado e pilha recebem os novos valores
-     */
-        $automato->estado_atual = $automato->novo_estado; //sobreescreve, OK
+        $estado_atual = $novo_estado;
+
         //1
-        if (($automato->estado_atual == 'q') && ($entrada == 'a') && (end($automato->topo_pilha) == 'Z')) {
-            $automato->novo_estado = 'p';
-            $automato->nova_pilha = ['B', 'B'];
+        if (($estado_atual == 'q') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
+            $novo_estado = 'p';
+            $nova_pilha = ['B', 'B'];
+
+            printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
+
         }
         //2
-        if (($automato->estado_atual == 'p') && ($entrada == 'b') && (end($automato->topo_pilha) == 'B')) {
-            $automato->novo_estado = 'p';
-            array_pop($automato->topo_pilha); //pode dar erro aqui, possivel fazer validação, se passou aqui, nao vai receber  o nova pilha la em cima
+        else if (($estado_atual == 'p') && ($entrada == 'b') && (end($topo_pilha) == 'B')) {
+            $novo_estado = 'p';
+            printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
+            array_pop($topo_pilha); //pode dar erro aqui, possivel fazer validação, se passou aqui, nao vai receber  o nova pilha la em cima
             //como ele ja atualizou o topo_pilha, ele ja pode cair em outra validacao antes da proxima entrada(foreach)
         }
         //3
-        if (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'Z')) {
-            $automato->novo_estado = 'p';
-            $automato->nova_pilha = ['B', 'B'];
+        else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
+            $novo_estado = 'p';
+            $nova_pilha = ['B', 'B'];
+            printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
         }
         //4 finaliza
-        if (($automato->estado_atual == 'p') && ($entrada == '') && (end($automato->topo_pilha) == 'Z')) {
-            $automato->novo_estado = 'p';
-            array_pop($automato->topo_pilha);
+        else if (($estado_atual == 'p') && ($entrada == '') && (end($topo_pilha) == 'Z')) {
+            $novo_estado = 'p';
+            printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
+            array_pop($topo_pilha);
         }
         //5
-        if (($automato->estado_atual == 'p') && ($entrada == 'a') && (end($automato->topo_pilha) == 'B')) {
-            $automato->novo_estado = 'p';
-            $automato->nova_pilha = ['B', 'B'];
+        else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'B')) {
+            $novo_estado = 'p';
+            $nova_pilha = ['B', 'B'];
+
+            printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
+        } else {
+           break;
         }
 
         /**
          * caso ja tenha feito o desempilhamento nos deltas, ele nao vai juntar os arrays
          */
-        if ($automato->nova_pilha) {
-            $automato->topo_pilha = array_merge($automato->topo_pilha, $automato->nova_pilha); //ele recebe vazio se o $nova_pilha for vazio
+        if ($nova_pilha) {
+            $topo_pilha = array_merge($topo_pilha, $nova_pilha); //ele recebe vazio se o $nova_pilha for vazio
         }
 
-        $automato->nova_pilha = null;
-
-        //esvazia o novo estado
-        //esvazia o nova pilha
-
+        $nova_pilha = null;
     } //fim foreach
-    if (!$automato->topo_pilha) {
-        echo "automato aceito";
-/*        
-?>
-        <h2 style color="green">
-            <strong>
-                AUTOMATO ACEITO
-            </strong>
-        </h2>
-    <?php
-  */  
+
+
+    echo "</pre>";
+    echo "<hr>";
+    echo "<pre>";
+    if (!$topo_pilha) {
+        echo "<b><aceito>Autômato aceito</aceito></b>";
     } else {
-        echo "automato aceito";
-    /*    
-    ?>
-        <h2 style color="green">
-            <strong>
-                AUTOMATO ACEITO
-            </strong>
-        </h2>
-<?php
-*/
+        echo "<b><naceito>Autômato NÃO aceito</naceito></b>";
+    }
+    echo "</pre>";
+}
+
+
+function printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha)
+{
+    echo "Estado Atual:         <strong>$estado_atual</strong><br>";
+
+    echo "Palavra a ser lida:   <entrada>$entrada</entrada><br>";
+
+    echo "Topo da pilha:        <strong>";
+    echo implode(', ', $topo_pilha), '</strong>';
+
+    echo "<br>Novo Estado:          <strong>$novo_estado</strong>";
+
+    if($nova_pilha){
+    echo "<br>Nova Pilha:           <strong>";
+    echo implode(', ', $nova_pilha), '</strong>';
+    }else{
+        echo "<br>Nova Pilha:           <strong>&</strong>";
 
     }
-//}
 
-
-
+    echo "<br>Estado atual:         <strong>$estado_atual</strong><br><br><br>";
+}
+echo "~Roni Deringer";
 
 
 /*

@@ -26,15 +26,13 @@ ___
 * `array_key_last` pega a última fumção do array;
 * `array_merge` Junta os valores de arrays (Usado para juntar os valores dos arrays recebidos 'topo da pilha' e os novos valores recibos das pilhas(se houver));
 * `str_split` Converte uma string em array, sendo cada caracter em uma posicação.
+* `implode` Visualizar array em apenas uma linha.
 
 ## AJUSTES:
-* conseguir trazer a entrada pra classe
-    * Tentar fazer sem a classe
 * Funções recursivas ao invés de if's
 
 
 ## FALTA:
-* ir exibindo a cada foreach os valores que estao sendo avaliados
 * Caso for Automato não deterministico (que pode haver alguma transição vazia), Fazer rodar mais de uma vez o foreach
 
 ## DUVIDAS:
