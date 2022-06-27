@@ -1,4 +1,9 @@
 <?php
+include __DIR__ . '/css/style.php';
+echo '<h1>Automato de Pilha</h1>';
+echo '<h2> a^n b^m | n > 0 e m = 2*n </h2>';
+
+echo "<hr>";
 
 $post_user = "ababbb";
 $conversao_p_array = str_split($post_user);
@@ -18,7 +23,7 @@ $entrada_post;
 $entradas = $conversao_p_array;
 $novo_estado = 'q';
 $topo_pilha = ['Z'];
-
+echo "<pre>";
 foreach ($entradas as $entrada) {
 
     $estado_atual = $novo_estado; 
@@ -28,38 +33,84 @@ foreach ($entradas as $entrada) {
         $novo_estado = 'p';
         $nova_pilha = ['B', 'B'];
 
-        echo "Estado Atual:  $estado_atual<br>" ;
+        echo "Estado Atual:        <strong>$estado_atual</strong><br>" ;
 
-        echo "Palavra a ser lida: $entrada<br>";
+        echo "Palavra a ser lida:  <strong>$entrada</strong><br>";
 
-        echo "Topo da pilha: ";
-        echo implode(', ',$topo_pilha);
+        echo "Topo da pilha:       ";
+        echo implode(', <strong>',$topo_pilha),'</strong>';
     
-        echo "<br>Nova Pilha: ";
-        echo implode(', ',$nova_pilha);
+        echo "<br>Nova Pilha:          ";
+        echo implode(', <strong>',$nova_pilha),'</strong>';
 
-        echo "<br>Estado atual: $estado_atual<br><br><br>";
+        echo "<br>Estado atual:        <strong>$estado_atual</strong><br><br><br>";
     }
     //2
     else if (($estado_atual == 'p') && ($entrada == 'b') && (end($topo_pilha) == 'B')) {
         $novo_estado = 'p';
         array_pop($topo_pilha); //pode dar erro aqui, possivel fazer validação, se passou aqui, nao vai receber  o nova pilha la em cima
         //como ele ja atualizou o topo_pilha, ele ja pode cair em outra validacao antes da proxima entrada(foreach)
+    
+        echo "Estado Atual:        <strong>$estado_atual</strong><br>" ;
+
+        echo "Palavra a ser lida:  <strong>$entrada</strong><br>";
+
+        echo "Topo da pilha:       ";
+        echo implode(', <strong>',$topo_pilha),'</strong>';
+    
+        echo "<br>Nova Pilha:          <strong>&</strong>";
+
+        echo "<br>Estado atual:        <strong>$estado_atual</strong><br><br><br>";
     }
     //3
     else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
         $novo_estado = 'p';
         $nova_pilha = ['B', 'B'];
-     }
+        
+        echo "Estado Atual:        <strong>$estado_atual</strong><br>" ;
+
+        echo "Palavra a ser lida:  <strong>$entrada</strong><br>";
+
+        echo "Topo da pilha:       ";
+        echo implode(', <strong>',$topo_pilha),'</strong>';
+    
+        echo "<br>Nova Pilha:          ";
+        echo implode(', <strong>',$nova_pilha),'</strong>';
+
+        echo "<br>Estado atual:        <strong>$estado_atual</strong><br><br><br>";
+    }
     //4 finaliza
     else if (($estado_atual == 'p') && ($entrada == '') && (end($topo_pilha) == 'Z')) {
         $novo_estado = 'p';
         array_pop($topo_pilha);
+    
+        echo "Estado Atual:        <strong>$estado_atual</strong><br>" ;
+
+        echo "Palavra a ser lida:  <strong>$entrada</strong><br>";
+
+        echo "Topo da pilha:       ";
+        echo implode(', <strong>',$topo_pilha),'</strong>';
+    
+        echo "<br>Nova Pilha:          <strong>&</strong>";
+
+        echo "<br>Estado atual:        <strong>$estado_atual</strong><br><br><br>";
     }
     //5
     else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'B')) {
         $novo_estado = 'p';
         $nova_pilha = ['B', 'B'];
+       
+        echo "Estado Atual:        <strong>$estado_atual</strong><br>" ;
+
+        echo "Palavra a ser lida:  <strong>$entrada</strong><br>";
+
+        echo "Topo da pilha:       ";
+        echo implode(', <strong>',$topo_pilha),'</strong>';
+    
+        echo "<br>Nova Pilha:          ";
+        echo implode(', <strong>',$nova_pilha),'</strong>';
+
+        echo "<br>Estado atual:        <strong>$estado_atual</strong><br><br><br>";
     } else {
         echo "automato nao aceito";
         break;
@@ -71,16 +122,21 @@ foreach ($entradas as $entrada) {
     if ($nova_pilha) {
         $topo_pilha = array_merge($topo_pilha, $nova_pilha); //ele recebe vazio se o $nova_pilha for vazio
     }
-
+   
     $nova_pilha = null;
 
 
+    
 } //fim foreach
+
+echo "</pre>";
+echo "<pre>";
 if (!$topo_pilha) {
     echo "automato aceito";
 } else {
     echo "automato NÃO aceito";
 }
+echo "</pre>";
 
 
 
