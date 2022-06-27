@@ -20,8 +20,8 @@ if (isset($_POST["entrada"])) {
 
     echo "<br>Palavra a ser lida: <b><br>";
     echo implode(' ', $conversao_p_array), '</b>';
-    
-    
+
+
     $estado_atual;
     $entradas;
     $topo_pilha;
@@ -30,51 +30,42 @@ if (isset($_POST["entrada"])) {
     $entrada_post;
 
 
-
-
     $entradas = $conversao_p_array;
     $novo_estado = 'q';
     $topo_pilha = ['Z'];
+
     echo "<pre>";
+
+
     foreach ($entradas as $entrada) {
 
         $estado_atual = $novo_estado;
 
-        //1
         if (($estado_atual == 'q') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
             $novo_estado = 'p';
             $nova_pilha = ['B', 'B'];
 
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
-
-        }
-        //2
-        else if (($estado_atual == 'p') && ($entrada == 'b') && (end($topo_pilha) == 'B')) {
+        } else if (($estado_atual == 'p') && ($entrada == 'b') && (end($topo_pilha) == 'B')) {
             $novo_estado = 'p';
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
             array_pop($topo_pilha); //pode dar erro aqui, possivel fazer validação, se passou aqui, nao vai receber  o nova pilha la em cima
             //como ele ja atualizou o topo_pilha, ele ja pode cair em outra validacao antes da proxima entrada(foreach)
-        }
-        //3
-        else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
+        } else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
             $novo_estado = 'p';
             $nova_pilha = ['B', 'B'];
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
-        }
-        //4 finaliza
-        else if (($estado_atual == 'p') && ($entrada == '') && (end($topo_pilha) == 'Z')) {
+        } else if (($estado_atual == 'p') && ($entrada == '') && (end($topo_pilha) == 'Z')) {
             $novo_estado = 'p';
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
             array_pop($topo_pilha);
-        }
-        //5
-        else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'B')) {
+        } else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'B')) {
             $novo_estado = 'p';
             $nova_pilha = ['B', 'B'];
 
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
         } else {
-           break;
+            break;
         }
 
         /**
@@ -111,15 +102,14 @@ function printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nov
 
     echo "<br>Novo Estado:          <strong>$novo_estado</strong>";
 
-    if($nova_pilha){
-    echo "<br>Nova Pilha:           <strong>";
-    echo implode(', ', $nova_pilha), '</strong>';
-    }else{
-        echo "<br>Nova Pilha:           <strong>&</strong>";
-
+    if ($nova_pilha) {
+        echo "<br>Empilha:              <strong>";
+        echo implode(', ', $nova_pilha), '</strong>';
+    } else {
+        echo "<br>Empilha:              <strong>&</strong>";
     }
-
-    echo "<br>Estado atual:         <strong>$estado_atual</strong><br><br><br>";
+    
+    echo "<br><br><br>";
 }
 echo "~Roni Deringer";
 
