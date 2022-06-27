@@ -22,11 +22,10 @@
 ___
 
 ## FUNÇÕES USADAS:
-* `array_pop` é uma função que remove o último item de um array;
-* `array_key_last` pega a última fumção do array;
+* `array_pop` Remove o último item de um array;
 * `array_merge` Junta os valores de arrays (Usado para juntar os valores dos arrays recebidos 'topo da pilha' e os novos valores recibos das pilhas(se houver));
-* `str_split` Converte uma string em array, sendo cada caracter em uma posicação.
-* `implode` Visualizar array em apenas uma linha.
+* `str_split` Converte uma string em array, sendo cada caracter em uma posicação;
+* `implode` Exibe array em apenas uma linha.
 
 ## AJUSTES:
 * Funções recursivas ao invés de if's
