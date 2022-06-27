@@ -34,6 +34,7 @@ ___
 
 ## FALTA:
 * ir exibindo a cada foreach os valores que estao sendo avaliados
+* Caso for Automato não deterministico (que pode haver alguma transição vazia), Fazer rodar mais de uma vez o foreach
 
 ## DUVIDAS:
 * Deve aceitar o `b` no inico? 

@@ -3,7 +3,7 @@ include __DIR__ . '/css/style.php';
 echo '<h1>Automato de Pilha</h1>';
 echo '<h2> a^n b^m | n > 0 e m = 2*n </h2>';
 echo "<pre>";
-
+/*
 ?>
 <form action="" method="post">
     <label>Entrada:</label>
@@ -11,12 +11,13 @@ echo "<pre>";
     <input type="submit" value="Verificar">
 </form>
 <?php
-
+*/
 echo "</pre>";
 echo "<hr>";
 //if (isset($_POST["entrada"])) {
    // $post_user = $_POST["entrada"];
-    $post_user = "bbbb";
+   $post_user = readline("Entrada: ");
+    // $post_user = "bbbb";
     $conversao_p_array = str_split($post_user);
     //atribuir um valor vazio na ultima posicao do array
     $conversao_p_array[] = '';
@@ -106,7 +107,7 @@ echo "<hr>";
     } //fim foreach
     if (!$automato->topo_pilha) {
         echo "automato aceito";
-        
+/*        
 ?>
         <h2 style color="green">
             <strong>
@@ -114,10 +115,10 @@ echo "<hr>";
             </strong>
         </h2>
     <?php
-    
+  */  
     } else {
         echo "automato aceito";
-        
+    /*    
     ?>
         <h2 style color="green">
             <strong>
@@ -125,6 +126,7 @@ echo "<hr>";
             </strong>
         </h2>
 <?php
+*/
 
     }
 //}
