@@ -4,7 +4,6 @@ $post_user = "ababbb";
 $conversao_p_array = str_split($post_user);
 $conversao_p_array[] = '';
 
-
 $estado_atual;
 $entradas;
 $topo_pilha;
@@ -12,15 +11,22 @@ $novo_estado;
 $nova_pilha;
 $entrada_post;
 
-
-
-
 $entradas = $conversao_p_array;
 $novo_estado = 'q';
 $topo_pilha = ['Z'];
+
 foreach ($entradas as $entrada) {
 
     $estado_atual = $novo_estado;
+
+    /*
+    * Delta:
+    1- δ = (q, a, Z) = (p, BBZ)
+    2- δ = (p, b, B) = (p, &)
+    3- δ = (p, a, Z) = (p, BBZ)
+    4- δ = (p, &, Z) = (p, &)
+    5- δ = (p, a, B) = (p, BBB)
+ */
 
     //1
     if (($estado_atual == 'q') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
@@ -30,9 +36,7 @@ foreach ($entradas as $entrada) {
     //2
     else if (($estado_atual == 'p') && ($entrada == 'b') && (end($topo_pilha) == 'B')) {
         $novo_estado = 'p';
-        array_pop($topo_pilha); //pode dar erro aqui, possivel fazer validação, se passou aqui, nao vai receber  o nova pilha la em cima
-        //como ele ja atualizou o topo_pilha, ele ja pode cair em outra validacao antes da proxima entrada(foreach)
-
+        array_pop($topo_pilha); 
     }
     //3
     else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
