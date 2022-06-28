@@ -44,28 +44,30 @@ if (isset($_POST["entrada"])) {
         if (($estado_atual == 'q') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
             $novo_estado = 'p';
             $nova_pilha = ['B', 'B'];
-
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
+     
         } else if (($estado_atual == 'p') && ($entrada == 'b') && (end($topo_pilha) == 'B')) {
             $novo_estado = 'p';
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
             array_pop($topo_pilha); //pode dar erro aqui, possivel fazer validação, se passou aqui, nao vai receber  o nova pilha la em cima
-            //como ele ja atualizou o topo_pilha, ele ja pode cair em outra validacao antes da proxima entrada(foreach)
+     
         } else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'Z')) {
             $novo_estado = 'p';
             $nova_pilha = ['B', 'B'];
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
+       
         } else if (($estado_atual == 'p') && ($entrada == '') && (end($topo_pilha) == 'Z')) {
             $novo_estado = 'p';
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
             array_pop($topo_pilha);
+       
         } else if (($estado_atual == 'p') && ($entrada == 'a') && (end($topo_pilha) == 'B')) {
             $novo_estado = 'p';
             $nova_pilha = ['B', 'B'];
-
             printTransicao($estado_atual, $entrada, $topo_pilha, $novo_estado, $nova_pilha);
+        
         } else {
-            break;
+            break; //pulo do gato, MIAU
         }
 
         /**
@@ -78,10 +80,11 @@ if (isset($_POST["entrada"])) {
         $nova_pilha = null;
     } //fim foreach
 
-
     echo "</pre>";
     echo "<hr>";
     echo "<pre>";
+
+
     if (!$topo_pilha) {
         echo "<b><aceito>Autômato aceito</aceito></b>";
     } else {
